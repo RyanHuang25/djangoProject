@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>新闻简报</title>
+    </head>
+    <body>
+        <div>
+            <h2>{{ titleList.0 }}</h2>
+            <h3>{{ titleList.1 }}</h3>
+            <hr>
+            {% for item in newsList %}
+                <p>{{ item }}</p>
+            {% endfor %}
+        </div>
+    </body>
+</html>

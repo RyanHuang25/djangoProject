@@ -7,14 +7,17 @@ def index(request):
     return HttpResponse('欢迎使用')
 
 def user_list(request):
-    name = 'huangrenwu'
-    roles = ['CEO','爬虫工程师','后端开发']
-    user_info = {
-        "name": "huangrenwu",
-        "age": 18,
-        "job": "爬虫工程师"
-    }
-    return render(request,'user_list.html',{"n1": name,'roles': roles,"user_info": user_info})
+    # request是一个对象，封装了用户发送过来的所有请求相关数据
+    # 1.获取请求方式 GET/POST
+    print(request.method)
+    # 2.在url上传递值
+    print(request.GET)
+    # 3.在请求体中提交数据
+    print(request.POST)
+    # 4.【响应】HttpResponse('返回内容'),内容字符串内容返回给请求者
+    # 5.【响应】读取html的内容+ 渲染（替换）-> 字符串、返回给用户浏览器
+    # 6.【响应】重定向 --> return redirect("https://www.baidu.com")
+    return render(request,'user_list.html',)
 
 def user_add(request):
     return HttpResponse('添加用户')

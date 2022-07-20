@@ -5,18 +5,6 @@
         <link rel="stylesheet" href="{% static 'css/user.css' %}">
     </head>
     <body>
-        <p class="test">用户列表</p>
-        <div>{{ n1 }}</div>
-        <div>
-            {% for item in roles %}
-                <span>{{ item }}</span><br/>
-            {% endfor %}
-        </div>
-        <div>
-            {% for key,value in user_info.items %}
-                <span>{{ key }}</span>
-                <span>{{ value }}</span><br/>
-            {% endfor %}
-        </div>
+
     </body>
 </html>

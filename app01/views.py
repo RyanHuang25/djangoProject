@@ -51,4 +51,11 @@ def aiqicha(request):
         dataList = AiqichaInfo.objects.raw('select * from aiqicha_entname limit 100')
         page = 1
         return render(request,'aiqicha.html',{"data_list": dataList,"page":page})
+    searchInput = request.POST.get('searchInput')
+    if searchInput == "":
+        dataList = AiqichaInfo.objects.raw('select * from aiqicha_entname limit 100')
+        page = 1
+        return render(request, 'aiqicha.html', {"data_list": dataList, "page": page})
+    dataList = AiqichaInfo.objects.raw(f'select * from aiqicha_entname where ENTNAME="{searchInput}"')
+    return render(request,'aiqicha.html',{"data_list": dataList,"page": 1})
 

@@ -1,0 +1,52 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>{{ entnameInfo.ENTNAME }}</title>
+        <link rel="stylesheet" href="{% static 'css/aiqicha.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1>{{ entnameInfo.ENTNAME }}</h1>
+        </div>
+        <div>
+            <table class="tableInfo">
+                <tr>
+                    <td class="titleTd">社会信用代码：</td>
+                    <td>{{ entnameInfo.UNISCID }}</td>
+                    <td class="titleTd">法人：</td>
+                    <td>{{ entnameInfo.legal_person }}</td>
+                </tr>
+                <tr>
+                    <td class="titleTd">注册资金：</td>
+                    <td>{{ entnameInfo.registered }}</td>
+                    <td class="titleTd">成立日期：</td>
+                    <td>{{ entnameInfo.set_date }}</td>
+                </tr>
+                <tr>
+                    <td class="titleTd">所在地区：</td>
+                    <td>{{ entnameInfo.province }}{{ entnameInfo.city }}{{ entnameInfo.area }}</td>
+                    <td class="titleTd">公司类型：</td>
+                    <td>{{ entnameInfo.company_type }}</td>
+                </tr>
+                <tr>
+                    <td class="titleTd">公司电话：</td>
+                    <td>{{ entnameInfo.phone }}</td>
+                    <td class="titleTd">所属行业：</td>
+                    <td>{{ entnameInfo.industry }}</td>
+                </tr>
+                <tr>
+                    <td class="titleTd">注册地址：</td>
+                    <td>{{ entnameInfo.address }}</td>
+                    <td class="titleTd">邮箱：</td>
+                    <td>{{ entanmeInfo.email }}</td>
+                </tr>
+                <tr>
+                    <td class="titleTd">介绍：</td>
+                    <td colspan="3">{{ entnameInfo.scope }}</td>
+                </tr>
+            </table>
+        </div>
+        
+    </body>
+</html>

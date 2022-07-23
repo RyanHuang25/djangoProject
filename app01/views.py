@@ -1,10 +1,12 @@
 from django.shortcuts import render,HttpResponse
 import requests
 from lxml import etree
+from app01.models import AiqichaInfo
 # Create your views here.
 
 def index(request):
-    return HttpResponse('欢迎使用')
+    if request.method == "GET":
+        return render(request,'index.html')
 
 def user_list(request):
     # request是一个对象，封装了用户发送过来的所有请求相关数据
@@ -36,3 +38,17 @@ def news(request):
     titleList = newsList[:2]
     newsList = newsList[2:]
     return render(request,'news.html',{"newsList": newsList,"titleList": titleList})
+
+def aiqicha(request):
+    if request.method == "GET":
+        if request.GET.get('id') != None:
+            entnameInfo = AiqichaInfo.objects.raw(f'select * from aiqicha_entname where id={request.GET.get("id")}')[0]
+            return render(request,'aiqichaInfo.html',{"entnameInfo": entnameInfo})
+        if request.GET.get('page') != None:
+            page = int(request.GET.get("page"))
+            dataList = AiqichaInfo.objects.raw(f'select * from aiqicha_entname limit {(page-1)*100},100')
+            return render(request, 'aiqicha.html', {"data_list": dataList,"page":page})
+        dataList = AiqichaInfo.objects.raw('select * from aiqicha_entname limit 100')
+        page = 1
+        return render(request,'aiqicha.html',{"data_list": dataList,"page":page})
+

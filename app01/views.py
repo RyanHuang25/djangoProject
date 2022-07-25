@@ -67,7 +67,7 @@ def appInfo(request):
             return render(request, 'appInfo.html', {"data_list": dataList, "page": 1})
     if request.GET.get('id') != None:
         appInfo = AiqichaInfo.objects.raw(f'select * from app_list where id={request.GET.get("id")}')[0]
-        return render(request, 'appInfomation.html', {"appInfo": appInfo})
+        return render(request, 'appinfomation.html', {"appInfo": appInfo})
         # return HttpResponse(appInfo)
     if request.GET.get('page') != None:
         page = int(request.GET.get("page"))

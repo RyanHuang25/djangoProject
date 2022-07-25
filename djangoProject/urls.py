@@ -26,5 +26,5 @@ urlpatterns = [
     path('user/add/',views.user_add),
     path('news/',views.news),
     path('aiqicha/',views.aiqicha),
-    # path(r'^aiqicha/id=(\d+)$',views.aiqichaInfo)
+    path('app/info/',views.appInfo),
 ]

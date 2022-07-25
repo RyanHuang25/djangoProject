@@ -59,3 +59,20 @@ def aiqicha(request):
     dataList = AiqichaInfo.objects.raw(f'select * from aiqicha_entname where ENTNAME="{searchInput}"')
     return render(request,'aiqicha.html',{"data_list": dataList,"page": 1})
 
+def appInfo(request):
+    if request.method == "POST":
+        searchInput = request.POST.get('searchInput')
+        if searchInput != "":
+            dataList = AiqichaInfo.objects.raw(f'select * from app_list where app_name="{searchInput}"')
+            return render(request, 'appInfo.html', {"data_list": dataList, "page": 1})
+    if request.GET.get('id') != None:
+        appInfo = AiqichaInfo.objects.raw(f'select * from app_list where id={request.GET.get("id")}')[0]
+        return render(request, 'appInfomation.html', {"appInfo": appInfo})
+        # return HttpResponse(appInfo)
+    if request.GET.get('page') != None:
+        page = int(request.GET.get("page"))
+        dataList = AiqichaInfo.objects.raw(f'select * from app_list limit {(page - 1) * 100},100')
+        return render(request, 'appInfo.html', {"data_list": dataList, "page": page})
+    dataList = AiqichaInfo.objects.raw('select * from app_list limit 100')
+    page = 1
+    return render(request,'appInfo.html',{"data_list": dataList,"page": page})

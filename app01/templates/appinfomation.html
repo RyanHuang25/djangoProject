@@ -1,0 +1,38 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>{{ appInfo.app_name }}</title>
+        <link rel="stylesheet" href="{% static 'css/aiqicha.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1>{{ appInfo.app_name }}</h1>
+        </div>
+        <div>
+            <table class="tableInfo">
+                <tr>
+                    <td class="titleTd">APP名称：</td>
+                    <td>{{ appInfo.app_name }}</td>
+                    <td class="titleTd">APP类型：</td>
+                    <td>{{ appInfo.app_type }}</td>
+                </tr>
+                <tr>
+                    <td class="titleTd">APP热度：</td>
+                    <td>{{ appInfo.app_hot }}</td>
+                    <td class="titleTd">公司：</td>
+                    <td>{{ appInfo.ent_name }}</td>
+                </tr>
+                <tr>
+                    <td class="titleTd">来源网站</td>
+                    <td colspan="3"><a href="{{ appInfo.source_url }}">{{ appInfo.source }}</a></td>
+                </tr>
+                <tr>
+                    <td class="titleTd">介绍：</td>
+                    <td colspan="3">{{ appInfo.infomation }}</td>
+                </tr>
+            </table>
+        </div>
+        
+    </body>
+</html>
